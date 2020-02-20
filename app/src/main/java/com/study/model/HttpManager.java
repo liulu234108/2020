@@ -116,19 +116,21 @@ public class HttpManager {
 
 
     /**
-     * 获取api接口
+     * 获取api接口数据
      * @return
      */
     public static MyApi getMyApi(){
         synchronized (HttpManager.class){
             if(myApi == null){
                 synchronized (HttpManager.class){
+              //      MyApi serverApis = getServerApis(Constant.Base_Url, MyApi.class);
                     myApi = getServerApis(Constant.Base_Url,MyApi.class);
                 }
             }
         }
         return myApi;
     }
+
     //拦截器的实现类
     private static class Myintercepter implements Interceptor {
 

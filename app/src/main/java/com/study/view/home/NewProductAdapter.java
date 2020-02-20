@@ -17,18 +17,18 @@ public class NewProductAdapter extends BaseAdapter {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.layout_brand_item;
+        return R.layout.layout_newproduct_item;
     }
 
     @Override
     protected void bindData(BaseViewHolder holder, int positon, Object o) {
-        IndexBean.DataBean.BrandListBean bean = (IndexBean.DataBean.BrandListBean) mDatas.get(positon);
-        TextView txtName = (TextView) holder.getView(R.id.txt_name);
-        TextView txtPrice = (TextView) holder.getView(R.id.txt_price);
-        ImageView img = (ImageView) holder.getView(R.id.img);
+        IndexBean.DataBean.NewGoodsListBean bean = (IndexBean.DataBean.NewGoodsListBean) mDatas.get(positon);
+        TextView txtName = (TextView) holder.getView(R.id.item_text);
+        TextView txtPrice = (TextView) holder.getView(R.id.item_desc);
+        ImageView img = (ImageView) holder.getView(R.id.item_img);
         txtName.setText(bean.getName());
-        txtPrice.setText(bean.getFloor_price()+"元起");
-        Glide.with(mContext).load(bean.getNew_pic_url()).into(img);
+        txtPrice.setText("￥"+bean.getRetail_price());
+        Glide.with(mContext).load(bean.getList_pic_url()).into(img);
     }
 
 }
