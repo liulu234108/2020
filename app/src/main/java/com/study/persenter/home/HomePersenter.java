@@ -1,9 +1,8 @@
 package com.study.persenter.home;
 
-import com.study.component.CommonSubscriber;
+import com.study.common.CommonSubscriber;
 import com.study.model.HttpManager;
 import com.study.model.bean.IndexBean;
-import com.study.model.bean.LoginInfo;
 import com.study.persenter.BasePersenter;
 import com.study.interfaces.home.HomeContract;
 import com.study.utils.RxUtils;

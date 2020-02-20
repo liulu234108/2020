@@ -1,6 +1,6 @@
 package com.study.persenter.catalog;
 
-import com.study.component.CommonSubscriber;
+import com.study.common.CommonSubscriber;
 import com.study.model.HttpManager;
 import com.study.model.bean.CatalogListBean;
 import com.study.model.bean.CatalogTabBean;

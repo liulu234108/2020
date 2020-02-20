@@ -1,4 +1,4 @@
-package com.study.component;
+package com.study.common;
 
 import android.text.TextUtils;
 
