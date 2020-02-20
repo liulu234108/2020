@@ -63,20 +63,21 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
         hometextBrand = (TextView) view.findViewById(R.id.hometext_brand);
         //直供
         homeBrand = (RecyclerView) view.findViewById(R.id.home_brand);
-        hometextNewproduct = (TextView) view.findViewById(R.id.hometext_newproduct);
-        //新品首发
-        homeNewproduct = (RecyclerView) view.findViewById(R.id.home_newproduct);
-        hometextRecommend = (TextView) view.findViewById(R.id.hometext_recommend);
-        //人气推荐
-        homeRecommend = (RecyclerView) view.findViewById(R.id.home_recommend);
-        hometextSubject = (TextView) view.findViewById(R.id.hometext_subject);
-        homeLayout = (LinearLayout) view.findViewById(R.id.home_layout);
-        //专题
-        homeSubject = (RecyclerView) view.findViewById(R.id.home_subject);
-        hometextLivingAtHome = (TextView) view.findViewById(R.id.hometext_living_at_home);
-        //居家
-        homeLivingAtHome = (RecyclerView) view.findViewById(R.id.home_living_at_home);
+//        hometextNewproduct = (TextView) view.findViewById(R.id.hometext_newproduct);
+//        //新品首发
+//        homeNewproduct = (RecyclerView) view.findViewById(R.id.home_newproduct);
+//        hometextRecommend = (TextView) view.findViewById(R.id.hometext_recommend);
+//        //人气推荐
+//        homeRecommend = (RecyclerView) view.findViewById(R.id.home_recommend);
+//        hometextSubject = (TextView) view.findViewById(R.id.hometext_subject);
+//        homeLayout = (LinearLayout) view.findViewById(R.id.home_layout);
+//        //专题
+//        homeSubject = (RecyclerView) view.findViewById(R.id.home_subject);
+//        hometextLivingAtHome = (TextView) view.findViewById(R.id.hometext_living_at_home);
+//        //居家
+//        homeLivingAtHome = (RecyclerView) view.findViewById(R.id.home_living_at_home);
 
+        //这个就是第一个
         brandList = new ArrayList<>();
         brandAdapter = new BrandAdapter(brandList);
         homeBrand.setAdapter(brandAdapter);
@@ -111,28 +112,35 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
 
     @Override
     public void homeDataReturn(IndexBean result) {
-//        banners = result.getData().getBanner();
-//        categoryList = result.getData().getCategoryList();
-//        //banner图片资源的集合
-//        final ArrayList<String> banners_datas = new ArrayList<>();
-//        for (int i = 0; i < banners.size(); i++) {
-//            String image_url = banners.get(i).getImage_url();
-//            banners_datas.add(image_url);
-//        }
+        banners = result.getData().getBanner();
+        categoryList = result.getData().getCategoryList();
+        //banner图片资源的集合
+        final ArrayList<String> banners_datas = new ArrayList<>();
+        for (int i = 0; i < banners.size(); i++) {
+            String image_url = banners.get(i).getImage_url();
+            banners_datas.add(image_url);
+        }
         //tab数据集合
 //        ArrayList<String> tab_datas = new ArrayList<>();
 //        for (int i = 0; i < categoryList.size(); i++) {
 //            String name = categoryList.get(i).getName();
 //            tab_datas.add(name);
 //        }
-       tobanner(banners_datas);
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                tobanner(banners_datas);
+                brandAdapter.addData(result.getData().getBrandList());
+            }
+        });
+
 //        totab(tab_datas);
-       brandAdapter.addData(result.getData().getBrandList());
-    }
-
-    private void totab(ArrayList<String> tab_datas) {
 
     }
+//
+//    private void totab(ArrayList<String> tab_datas) {
+//
+//    }
 
     private void tobanner(ArrayList<String> banners_datas) {
 
