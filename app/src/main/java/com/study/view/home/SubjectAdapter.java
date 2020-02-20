@@ -25,8 +25,8 @@ public class SubjectAdapter extends BaseAdapter {
         IndexBean.DataBean.TopicListBean bean = (IndexBean.DataBean.TopicListBean) mDatas.get(positon);
         TextView textName = (TextView) holder.getView(R.id.subject_text);
         TextView textTitle = (TextView) holder.getView(R.id.subject_title);
-        TextView textDesc = (TextView) holder.getView(R.id.item_desc);
-        ImageView img = (ImageView) holder.getView(R.id.item_img);
+        TextView textDesc = (TextView) holder.getView(R.id.subject_desc);
+        ImageView img = (ImageView) holder.getView(R.id.subject_img);
 
         textName.setText(bean.getTitle());
         textTitle.setText("￥"+bean.getPrice_info()+"元起");

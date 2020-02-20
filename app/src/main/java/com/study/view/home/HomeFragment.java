@@ -51,7 +51,7 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
     private HotGoodAdapter hotGoodAdapter;
     private List<IndexBean.DataBean.TopicListBean> subjectList;
     private SubjectAdapter subjectAdapter;
-    private List<IndexBean.DataBean.CategoryListBean> livingatHme;
+    private List<IndexBean.DataBean.CategoryListBean.GoodsListBean> livingatHme;
     private LivingHomeAdapter livingHomeAdapter;
 
     @Override
@@ -150,7 +150,7 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
                 newProductAdapter.addData(result.getData().getNewGoodsList());
                 hotGoodAdapter.addData(result.getData().getHotGoodsList());
                 subjectAdapter.addData(result.getData().getTopicList());
-                livingHomeAdapter.addData(result.getData().getCategoryList());
+                livingHomeAdapter.addData(result.getData().getCategoryList().get(0).getGoodsList());
             }
         });
 
