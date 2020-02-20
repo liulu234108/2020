@@ -126,6 +126,7 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
 //            String name = categoryList.get(i).getName();
 //            tab_datas.add(name);
 //        }
+        //
         getActivity().runOnUiThread(new Runnable() {
             @Override
             public void run() {
