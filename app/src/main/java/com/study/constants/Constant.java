@@ -8,9 +8,9 @@ public class Constant {
 
     public static final String Base_Url = "https://cdwan.cn/api/";
 
-    public static final String Base_apk_url = "http://yun918.cn/study/public/";
-
-    public static final String Base_Wan_url = "https://www.wanandroid.com/";
+//    public static final String Base_apk_url = "http://yun918.cn/study/public/";
+//
+//    public static final String Base_Wan_url = "https://www.wanandroid.com/";
 
 
     //网络缓存的地址
