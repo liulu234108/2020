@@ -159,7 +159,6 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
     }
 
     private void totab(ArrayList<String> tab_datas) {
-
         //tab的显示
         for (int i = 0; i < tab_datas.size(); i++) {
             homeTab.addTab(homeTab.newTab().setText(tab_datas.get(i)));
