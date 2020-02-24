@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     OwnFragment ownFragment;
     CatalogFragment catalogFragment;
     FragmentManager fragmentManager;
+    SubjectFragment subjectFragment;
     private ShoppFragment shoppFragment;
-    private SubjectFragment subjectFragment;
     private ViewPager main_viewpager;
     private TabLayout main_tab;
 
