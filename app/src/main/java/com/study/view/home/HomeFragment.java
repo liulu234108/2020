@@ -43,6 +43,8 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
     private RecyclerView homeSubject;
     private TextView hometextLivingAtHome;
     private RecyclerView homeLivingAtHome;
+    private TextView hometextMeal;
+    private RecyclerView homeMeal;
     private List<IndexBean.DataBean.BannerBean> banners;
     private List<IndexBean.DataBean.CategoryListBean> categoryList;
     private List<IndexBean.DataBean.NewGoodsListBean> newproductlist;
@@ -53,6 +55,8 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
     private SubjectAdapter subjectAdapter;
     private List<IndexBean.DataBean.CategoryListBean.GoodsListBean> livingatHme;
     private LivingHomeAdapter livingHomeAdapter;
+    private ArrayList<IndexBean.DataBean.CategoryListBean.GoodsListBean> meal;
+    private LivingHomeAdapter mealAdapter;
 
     @Override
     protected int getLayout() {
@@ -80,7 +84,9 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
         hometextLivingAtHome = (TextView) view.findViewById(R.id.hometext_living_at_home);
         //居家
         homeLivingAtHome = (RecyclerView) view.findViewById(R.id.home_living_at_home);
-
+        hometextMeal = (TextView) view.findViewById(R.id.hometext_meal);
+        //餐厨
+        homeMeal = (RecyclerView) view.findViewById(R.id.home_meal);
         //直供
         brandList = new ArrayList<>();
         brandAdapter = new BrandAdapter(brandList);
@@ -90,7 +96,7 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
         //新品首发
         newproductlist = new ArrayList<>();
         newProductAdapter = new NewProductAdapter(newproductlist);
-        homeNewproduct.setAdapter(brandAdapter);
+        homeNewproduct.setAdapter(newProductAdapter);
         homeNewproduct.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
         //人气推荐
@@ -110,8 +116,13 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
         livingatHme = new ArrayList<>();
         livingHomeAdapter = new LivingHomeAdapter(livingatHme);
         homeLivingAtHome.setAdapter(livingHomeAdapter);
-        homeLivingAtHome.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        homeLivingAtHome.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
+        //餐厨
+        meal = new ArrayList<>();
+        mealAdapter = new LivingHomeAdapter(meal);
+        homeMeal.setAdapter(mealAdapter);
+        homeMeal.setLayoutManager(new GridLayoutManager(getActivity(),2));
     }
 
     @Override
@@ -151,6 +162,7 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
                 hotGoodAdapter.addData(result.getData().getHotGoodsList());
                 subjectAdapter.addData(result.getData().getTopicList());
                 livingHomeAdapter.addData(result.getData().getCategoryList().get(0).getGoodsList());
+                mealAdapter.addData(result.getData().getCategoryList().get(1).getGoodsList());
             }
         });
 
