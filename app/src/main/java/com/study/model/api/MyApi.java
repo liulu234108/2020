@@ -1,6 +1,7 @@
 package com.study.model.api;
 
 
+import com.study.model.bean.BrandBean;
 import com.study.model.bean.CatalogListBean;
 import com.study.model.bean.CatalogTabBean;
 import com.study.model.bean.IndexBean;
@@ -24,8 +25,9 @@ public interface MyApi {
     @GET("catalog/current")
     Flowable<CatalogListBean> getCatalogList(@Query("id") int id);
 
-
-
+    //获取直供文字的列表数据
+    @GET("brand/list")
+    Flowable<BrandBean> getBrandbean(@Query("page") int page,@Query("size")int size);
 
 
 }

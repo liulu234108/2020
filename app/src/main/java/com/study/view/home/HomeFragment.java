@@ -1,6 +1,7 @@
 package com.study.view.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -15,17 +16,23 @@ import com.bumptech.glide.Glide;
 import com.google.android.material.tabs.TabLayout;
 import com.study.R;
 import com.study.base.BaseFragment;
+import com.study.base.adapter.BaseAdapter;
 import com.study.interfaces.home.HomeContract;
 import com.study.model.bean.IndexBean;
 import com.study.persenter.home.HomePersenter;
+import com.study.view.home.activity.BrandActivity;
+import com.study.view.home.adapter.BrandAdapter;
+import com.study.view.home.adapter.HotGoodAdapter;
+import com.study.view.home.adapter.LivingHomeAdapter;
+import com.study.view.home.adapter.NewProductAdapter;
+import com.study.view.home.adapter.SubjectAdapter;
 import com.youth.banner.Banner;
 import com.youth.banner.loader.ImageLoader;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.Persenter> implements HomeContract.View {
+public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.Persenter> implements HomeContract.View{
 
 
     List<IndexBean.DataBean.BrandListBean> brandList;
@@ -92,12 +99,28 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
         brandAdapter = new BrandAdapter(brandList);
         homeBrand.setAdapter(brandAdapter);
         homeBrand.setLayoutManager(new GridLayoutManager(context, 2));
+        //实现直供的点击事件
+        hometextBrand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, BrandActivity.class);
+                activity.startActivity(intent);
+            }
+        });
+
 
         //新品首发
         newproductlist = new ArrayList<>();
         newProductAdapter = new NewProductAdapter(newproductlist);
         homeNewproduct.setAdapter(newProductAdapter);
         homeNewproduct.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        //实现新品首发的点击事件
+        newProductAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+
+            }
+        });
 
         //人气推荐
         hotGoodList = new ArrayList<>();
@@ -105,24 +128,45 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
         homeRecommend.setAdapter(hotGoodAdapter);
         homeRecommend.setLayoutManager(new LinearLayoutManager(getActivity()));
         homeRecommend.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayout.VERTICAL));
+        hotGoodAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
 
+            }
+        });
         //专题
         subjectList = new ArrayList<>();
         subjectAdapter = new SubjectAdapter(subjectList);
         homeSubject.setAdapter(subjectAdapter);
         homeSubject.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+        subjectAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
 
+            }
+        });
         //居家
         livingatHme = new ArrayList<>();
         livingHomeAdapter = new LivingHomeAdapter(livingatHme);
         homeLivingAtHome.setAdapter(livingHomeAdapter);
         homeLivingAtHome.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        livingHomeAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
 
+            }
+        });
         //餐厨
         meal = new ArrayList<>();
         mealAdapter = new LivingHomeAdapter(meal);
         homeMeal.setAdapter(mealAdapter);
         homeMeal.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        mealAdapter.setOnItemClickListener(new BaseAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int position) {
+
+            }
+        });
     }
 
     @Override
@@ -186,7 +230,13 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
                 Glide.with(context).load((String) path).into(imageView);
             }
         }).start();
-
+//        //banner的点击事件
+//        banner.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
     }
 
     @Override

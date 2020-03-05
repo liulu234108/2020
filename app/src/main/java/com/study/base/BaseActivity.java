@@ -1,5 +1,6 @@
 package com.study.base;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public abstract class BaseActivity<V extends IBaseView,P extends IPersenter> extends AppCompatActivity implements IBaseView {
-
+    protected Context context;
     //获取布局文件
     protected abstract int getLayout();
     //初始化view
