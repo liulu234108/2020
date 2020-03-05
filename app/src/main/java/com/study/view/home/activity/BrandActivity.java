@@ -53,6 +53,7 @@ public class BrandActivity extends BaseActivity<BrandContract.View, BrandContrac
     public void getBean(BrandBean brandBean) {
         List<BrandBean.DataBeanX.DataBean> data = brandBean.getData().getData();
         brandActivityAdapter.addData(data);
+        //
     }
 
     @Override
