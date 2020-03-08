@@ -1,6 +1,8 @@
 package com.study.view;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -32,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     private ShoppFragment shoppFragment;
     private ViewPager main_viewpager;
     private TabLayout main_tab;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

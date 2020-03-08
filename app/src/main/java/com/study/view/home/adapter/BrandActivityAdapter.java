@@ -27,7 +27,7 @@ public class BrandActivityAdapter extends BaseAdapter {
 
     @Override
     protected void bindData(BaseViewHolder holder, int positon, Object o) {
-        BrandBean.DataBeanX.DataBean datas= (BrandBean.DataBeanX.DataBean) mDatas.get(positon);
+        BrandBean.DataBeanX.DataBean datas= (BrandBean.DataBeanX.DataBean) o;
         brandItemDirectimg = (ImageView) holder.getView(R.id.brand_item_directimg);
         textItemDirect = (TextView) holder.getView(R.id.text_item_direct);
         textItemDirect.setText(datas.getName());

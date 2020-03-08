@@ -34,12 +34,13 @@ public class BrandActivity extends BaseActivity<BrandContract.View, BrandContrac
 
         tvPublic = (TextView) findViewById(R.id.tv_public);
         brandRecy = (RecyclerView) findViewById(R.id.brand_recy);
-        brandRecy.setLayoutManager(new GridLayoutManager(context,1));
+
         HashMap<String, Integer> stringIntegerHashMap = new HashMap<>();
         //添加item之间的间距
         //stringIntegerHashMap.put(RecyclerViewSpacesItemDecoration.BOTTOM_DECORATION,10);//底部间距
         brandRecy.addItemDecoration(new RecyclerViewSpacesItemDecoration(stringIntegerHashMap));
         list = new ArrayList<>();
+        brandRecy.setLayoutManager(new LinearLayoutManager(this));
         brandActivityAdapter = new BrandActivityAdapter(list);
         brandRecy.setAdapter(brandActivityAdapter);
     }
@@ -52,8 +53,7 @@ public class BrandActivity extends BaseActivity<BrandContract.View, BrandContrac
     @Override
     public void getBean(BrandBean brandBean) {
         List<BrandBean.DataBeanX.DataBean> data = brandBean.getData().getData();
-        brandActivityAdapter.addData(data);
-        //
+        brandActivityAdapter.refresh(data);
     }
 
     @Override

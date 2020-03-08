@@ -121,7 +121,6 @@ public class HomeFragment extends BaseFragment<HomeContract.View, HomeContract.P
 
             }
         });
-
         //人气推荐
         hotGoodList = new ArrayList<>();
         hotGoodAdapter = new HotGoodAdapter(hotGoodList);
